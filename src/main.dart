@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'scenes/camera/camera.dart';
-import 'scenes/gallery/gallery.dart';
+import 'camera.dart';
+import 'gallery.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/camera',
       routes: {
-        '/camera': (BuildContext ctx) => CameraScreen(),
-        '/gallery': (BuildContext ctx) => GalleryScreen(),
+        '/camera': (BuildContext ctx) => Camera(),
+        '/gallery': (BuildContext ctx) => Gallery(),
       },
     );
   }
