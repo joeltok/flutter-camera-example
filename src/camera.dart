@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path_provider/path_provider.dart';
 
 import 'camera.dart';
 
@@ -78,6 +79,13 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     try {
       final DateFormat formatter = DateFormat('yyyyMMddHHmmss');
       String fileName = 'image_${formatter.format(DateTime.now())}';
+
+      final Directory directory = await getApplicationDocumentsDirectory();
+      _imagesFolder = Directory(join('${directory.path}', 'gallery'));
+      if (!_imagesFolder.existsSync()) {
+        _imagesFolder.createSync();
+      }
+
       final String path = '${_imagesFolder.path}/$fileName.png';
       await widget._controller.takePicture(path);
     } catch(e) {
