@@ -8,7 +8,7 @@ import 'camera.dart';
 
 class Camera extends StatefulWidget {
   final loadingWidget;
-  Camera(this.loadingWidget);
+  Camera({this.loadingWidget});
 
   _CameraState createState() => _CameraState();
 }
