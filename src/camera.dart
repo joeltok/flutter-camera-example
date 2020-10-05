@@ -74,6 +74,17 @@ class _CameraState extends State<Camera> with WidgetsBindingObserver {
     return controller;
   }
 
+  Future<void> takePicture() async {
+    try {
+      final DateFormat formatter = DateFormat('yyyyMMddHHmmss');
+      String fileName = 'image_${formatter.format(DateTime.now())}';
+      final String path = '${_imagesFolder.path}/$fileName.png';
+      await widget._controller.takePicture(path);
+    } catch(e) {
+      print(e);
+    }
+  }  
+  
   toggleCamera() async {
     int newSelected = (_selected + 1) % _cameras.length;
     _selected = newSelected;
